@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user.email %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <img src="<%= @post.image %>">
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+<% if @post.user == current_user %>
+  <%= link_to 'Edit', edit_post_path(@post) %>
+<% end %>
+<%= link_to 'Back', posts_path %>
+
+<br>
+
+<h3>Comment:</h3>
+<%= form_for Comment.new, url: '/comments' do |f| %>
+    <%= f.text_area :message %>
+    <%= f.hidden_field :post_id, value: @post.id %>
+    <%= f.submit "Create" %>
+<% end %>
+
+<% @post.comments.each do |comment| %>
+  <div>
+    <hr>
+    <strong>
+      <%= comment.user.email %>
+    </strong>
+    <p><%= comment.message %></p>
+    <% if comment.user == current_user %>
+          <%= link_to 'Edit', edit_comment_path(comment) %>
+          <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+    <hr>
+  </div>
+<% end %>

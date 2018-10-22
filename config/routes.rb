@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get 'comments/:id', to: 'posts#index'
 
   resources :comments
-  root 'posts#index'
+  root to: 'posts#index'
 
   resources :posts
   devise_for :users

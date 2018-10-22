@@ -5,10 +5,7 @@
   <%= @post.user.email %>
 </p>
 
-<p>
-  <strong>Image:</strong>
-  <img src="<%= @post.image %>">
-</p>
+<%= image_tag @post.image, width: '300' %>
 
 <p>
   <strong>Title:</strong>

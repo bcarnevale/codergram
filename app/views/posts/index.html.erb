@@ -6,8 +6,8 @@
     <% @posts.each do |post| %>
      
         <p><strong><%= post.user.email %></strong></p>
-        <p><img src="<%= post.image %>"></p>
-        <p><%= post.title %></p>
+        <%= image_tag post.image, width: '300' %>
+        <h4><%= post.title %></h5>
 
         <%= link_to 'Show', post %>
 
@@ -33,6 +33,8 @@
             <hr>
           </div>
         <% end %>
+
+        <br>
 
     <% end %>
 

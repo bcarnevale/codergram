@@ -32,10 +32,10 @@
       <%= comment.user.email %>
     </strong>
     <p><%= comment.message %></p>
-    <% if comment.user == current_user %>
+ 
           <%= link_to 'Edit', edit_comment_path(comment) %>
           <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
+     
     <hr>
   </div>
 <% end %>
